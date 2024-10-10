@@ -16,6 +16,10 @@ function App() {
 
   const [students, setStudents] = useState<Student[]>(intitalStudent ?? []);
 
+  const filteredStudents = students.filter( (student) =>
+	filter === "-" ? student.name.toLowerCase().includes(filter): true
+  )
+
   // const options = Array.from(
   //   new Set(
   //     students.map((student) => student.name.trim().split(" ")[0].toLowerCase())
@@ -59,7 +63,7 @@ function App() {
         options={Object.values(options)}
       />
       <Grid
-        students={students}
+        students={filteredStudents}
         // onAddStudent={onAddStudent}
         onRemoveStudent={onRemoveStudent}
       >
